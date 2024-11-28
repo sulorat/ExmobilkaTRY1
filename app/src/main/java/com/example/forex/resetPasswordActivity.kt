@@ -2,6 +2,7 @@ package com.example.forex
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -18,10 +19,15 @@ class resetPasswordActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val toSignIn = findViewById<ImageButton>(R.id.backArrow)
-        toSignIn.setOnClickListener {
-            val intent3 = Intent(this, signInActivity::class.java)
+        val toEnterOtp = findViewById<ImageButton>(R.id.backArrow)
+        toEnterOtp.setOnClickListener {
+            val intent3 = Intent(this, enterOtpActivity::class.java)
             startActivity(intent3)
         }
+        val toSignIn = findViewById<Button>(R.id.resetPasswordButton)
+        toSignIn.setOnClickListener {
+            val intent2 = Intent(this, signInActivity::class.java)
+            startActivity(intent2)
         }
+    }
 }

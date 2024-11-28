@@ -51,7 +51,7 @@ class forgetPasswordActivity : AppCompatActivity() {
 
         try {
             startActivity(Intent.createChooser(intent, "Отправка email"))
-            Toast.makeText(this, "Email отправлен успешно", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Ваш код: $code", Toast.LENGTH_LONG).show()
         } catch (e: Exception) {
             e.printStackTrace()
             Toast.makeText(this, "Ошибка отправки email", Toast.LENGTH_SHORT).show()

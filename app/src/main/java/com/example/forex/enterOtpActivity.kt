@@ -1,6 +1,7 @@
 package com.example.forex
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -41,6 +42,8 @@ class enterOtpActivity : AppCompatActivity() {
             if (enteredCode == savedCode)
             {
                 Toast.makeText(this, "Код подтверждения правильный", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, resetPasswordActivity::class.java)
+                startActivity(intent)
             }
             else
             {
