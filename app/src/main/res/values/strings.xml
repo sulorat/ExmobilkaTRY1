@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">ForEx</string>
+    <string name="econify">Econify</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="text_sign_up">It was popularised in the 1960s with the release of Letraset sheetscontaining Lorem Ipsum.</string>
+    <string name="name">Name</string>
+    <string name="email_phone_number">Email/Phone Number</string>
+    <string name="password">Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="checkBox_text">I’m agree to The Terms of Service and Privacy Policy</string>
+    <string name="do_you_have_an_account_sign_in">Do you have an account?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="forget_password">Forget password?</string>
+    <string name="log_in">Log In</string>
+    <string name="don_t_have_account">Don\'t have account?</string>
+    <string name="text_forget_passvord">It was popularised in the 1960s with the release of Letraset sheetscontaining Lorem Ipsum.</string>
+    <string name="email_id_mobile_number">Email ID/ Mobile Number</string>
+    <string name="continue_fa">Continue</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="text_enter_otp">Enter the OTP code we just sent you on your registered Email/Phone number</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="didn_t_get_otp">Didn’t get OTP?</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="submit">Submit</string>
+</resources>
