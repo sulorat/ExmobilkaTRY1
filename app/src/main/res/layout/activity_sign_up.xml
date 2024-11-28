@@ -68,7 +68,7 @@
         android:background="@color/textBackground"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
-        android:inputType="textEmailAddress|phone"
+        android:inputType="textEmailAddress"
         app:layout_constraintTop_toBottomOf="@id/nameEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

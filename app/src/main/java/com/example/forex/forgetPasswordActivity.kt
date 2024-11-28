@@ -15,6 +15,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.forex.models.UserListManage
+import com.example.forex.models.UserSession
 import kotlin.random.Random
 
 class forgetPasswordActivity : AppCompatActivity() {
@@ -84,33 +86,39 @@ class forgetPasswordActivity : AppCompatActivity() {
         sendButton.setOnClickListener {
             val input = emailOrMobileInput.text.toString()
             val code = generateRandomCode()
+
+
+            if (input.isEmpty()) {
+                Toast.makeText(this, "Поле не может быть пустым", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+
+            if (!UserListManage.checkUser(input)) {
+                Toast.makeText(this, "Такого номера или почты нет в базе клиентов", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
             saveCode(this, code)
 
-            if (input.isNotEmpty()) {
-                if (isValidEmail(input)) {
-                    sendEmail(input, code)
-                    val intent2 = Intent(this, enterOtpActivity::class.java)
-                    startActivity(intent2)
-                } else if (isValidPhoneNumber(input)) {
-                    sendSms(input, code)
-                    val intent2 = Intent(this, enterOtpActivity::class.java)
-                    startActivity(intent2)
-                } else {
-                    Toast.makeText(
-                        this,
-                        "Введите действительный номер телефона или email",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
+            if (isValidEmail(input)) {
+                sendEmail(input, code)
+                val intent2 = Intent(this, enterOtpActivity::class.java)
+                UserSession.currentUserEmail = input
+                startActivity(intent2)
+            } else if (isValidPhoneNumber(input)) {
+                sendSms(input, code)
+                val intent2 = Intent(this, enterOtpActivity::class.java)
+                UserSession.currentUserEmail = input
+                startActivity(intent2)
+            } else {
+                Toast.makeText(
+                    this,
+                    "Введите действительный номер телефона или email",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-            else
-            {
-                Toast.makeText(this, "Поле не может быть пустым", Toast.LENGTH_SHORT).show()
-            }
-
-
-
-            }
+        }
 
         }
     }

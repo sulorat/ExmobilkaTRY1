@@ -22,4 +22,5 @@
     <string name="didn_t_get_otp">Didn’t get OTP?</string>
     <string name="resend_otp">Resend OTP</string>
     <string name="submit">Submit</string>
+    <string name="home">ДОМОЙ</string>
 </resources>

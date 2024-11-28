@@ -28,6 +28,7 @@ class enterOtpActivity : AppCompatActivity() {
             insets
         }
 
+        val userEmail = intent.getStringExtra("agent_email")
         val savedCode = getSavedCode(this)
 
         val resetPasswordButton: Button = findViewById(R.id.resetPasswordButton)

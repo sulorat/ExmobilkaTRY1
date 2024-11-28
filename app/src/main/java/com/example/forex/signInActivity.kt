@@ -3,10 +3,14 @@ package com.example.forex
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.forex.models.User
+import com.example.forex.models.UserListManage
 
 class signInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +33,22 @@ class signInActivity : AppCompatActivity() {
         toForgetPassword.setOnClickListener {
             val intent2 = Intent(this, forgetPasswordActivity::class.java)
             startActivity(intent2)
+        }
+
+        val toLastActivity = findViewById<Button>(R.id.loginButton)
+        toLastActivity.setOnClickListener {
+            val emailInput = findViewById<EditText>(R.id.emailEditText)
+            val email = emailInput.text.toString()
+            val passwordInput = findViewById<EditText>(R.id.passwordEditText)
+            val password = passwordInput.text.toString()
+
+            if(UserListManage.getUserByEmail(email)?.password!=password){
+                Toast.makeText(this, "Неправильный логин или пароль", Toast.LENGTH_LONG).show()
+            }
+            else {
+                val intent3 = Intent(this, lastActivity::class.java)
+                startActivity(intent3)
+            }
         }
 
     }
