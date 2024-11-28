@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.telephony.SmsManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -43,7 +44,7 @@ class forgetPasswordActivity : AppCompatActivity() {
 
     private fun sendEmail(email: String, code: String) {
         val intent = Intent(Intent.ACTION_SEND)
-        intent.type = "message/rfc822"
+        intent.type = "message/95843"
         intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
         intent.putExtra(Intent.EXTRA_SUBJECT, "Код подтверждения")
         intent.putExtra(Intent.EXTRA_TEXT, "Ваш код подтверждения: $code")
@@ -70,6 +71,13 @@ class forgetPasswordActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val toSignIn = findViewById<ImageButton>(R.id.backArrow)
+        toSignIn.setOnClickListener {
+            val intent3 = Intent(this, signInActivity::class.java)
+            startActivity(intent3)
+        }
+
         val emailOrMobileInput = findViewById<EditText>(R.id.emailOrMobileInput)
         val sendButton = findViewById<Button>(R.id.continueButton)
 
@@ -81,8 +89,12 @@ class forgetPasswordActivity : AppCompatActivity() {
             if (input.isNotEmpty()) {
                 if (isValidEmail(input)) {
                     sendEmail(input, code)
+                    val intent2 = Intent(this, enterOtpActivity::class.java)
+                    startActivity(intent2)
                 } else if (isValidPhoneNumber(input)) {
                     sendSms(input, code)
+                    val intent2 = Intent(this, enterOtpActivity::class.java)
+                    startActivity(intent2)
                 } else {
                     Toast.makeText(
                         this,
@@ -96,8 +108,8 @@ class forgetPasswordActivity : AppCompatActivity() {
                 Toast.makeText(this, "Поле не может быть пустым", Toast.LENGTH_SHORT).show()
             }
 
-                val intent2 = Intent(this, forgetPasswordActivity::class.java)
-                startActivity(intent2)
+
+
             }
 
         }
